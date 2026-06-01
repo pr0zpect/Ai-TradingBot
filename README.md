@@ -69,7 +69,7 @@ trading_bot/
 
 1. Clone the repository:
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/your-username/trading_bot.git
    cd trading_bot
    ```
 
@@ -87,6 +87,7 @@ trading_bot/
    BINANCE_TESTNET_API_KEY=your_api_key_here
    BINANCE_TESTNET_API_SECRET=your_api_secret_here
    ```
+> ⚠️ Never commit your `.env` file. A `.gitignore` is included to prevent this automatically.
 
 ---
 
@@ -193,6 +194,8 @@ To stream logs in real time:
 tail -f logs/trading_bot.log
 ```
 
+> The `logs/` directory is created automatically on first run — no manual setup needed.
+
 ---
 
 ## Security Notes
@@ -211,7 +214,7 @@ tail -f logs/trading_bot.log
 - The bot assumes USDT-M futures pairs.
 - It requires Python 3.9 or higher.
 - The `python-dotenv` package is used for secure loading of API credentials.
-- STOP_MARKET orders use a default `workingType` of `CONTRACT_PRICE` and do not require a limit price.
+- LIMIT orders use a default timeInForce of GTC (Good Till Cancelled).
 - Minimum quantity and price precision are not validated by the bot; they depend on each symbol's exchange filters on the testnet.
 - The Binance Futures Testnet resets periodically; placed orders will not persist indefinitely.
 - Network connectivity to `https://testnet.binancefuture.com` is assumed to be available at runtime.
